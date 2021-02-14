@@ -75,6 +75,7 @@ header{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 30px;
+	margin-bottom: 15px;
 }
 
 .place{
@@ -82,22 +83,34 @@ header{
 	font-weight: bold;
 }
 
+.place-current{
+	margin-bottom: 15px;
+}
+
 .weather-icon{
 	border: solid 1px;
+	margin-right: 20%;
 }
 
 .current-weather{
+	margin: 7% 0;
 	display: flex;
-	justify-content: space-around;
+}
+
+.temperature{
+	font-size: 120px;
 }
 
 /* Weather report card */
 
 .weather-report>li{
-	border: solid 1px;
 	margin: 5px;
-	padding: 5px;
+	padding: 10px;
 	background-color: #50DD88;
 	display: flex;
 	justify-content: space-between;
+}
+
+.weather-report>li>h4{
+	font-weight: bold;
 }
