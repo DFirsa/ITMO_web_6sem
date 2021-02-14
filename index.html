@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Weather report</title>
+        <script src="https://kit.fontawesome.com/3414c82043.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/styles.css">
@@ -14,14 +15,13 @@
                 <button class="refresh">Обновить геопозицию</button>
             </header>
             
-
             <!-- Current geoposition -->
             <section class="current-position">
                 <div>
                     <h3 class="place place-current">Saint-Petersburg</h3>
                     <div class="current-weather">
-                        <img src="" alt="weather icon" class="weather-icon">
-                        <p class="temperature">8°C</p>
+                        <i class="fas fa-sun"></i>
+                        <p>8°C</p>
                     </div>
                 </div>
                 
@@ -51,10 +51,79 @@
             
             <!-- Pinned -->
             <section class="pinned">
-                <h2 class="section_title">Избранное</h2>
+                <div class="section-titles-block">
+                    <h2 class="section_title">Избранное</h2>
+                    <form action="">
+                        <input type="search" name="" id="">
+                        <button><i class="fas fa-plus"></i></button>
+                    </form>
+                </div>
                 <ul class="pinned-list">
-                    <li class="weather-card">
-
+                    <li>
+                        <div class="card-header">
+                            <div>
+                                <h3 class="place">Moscow</h3>
+                                <p>5°C</p>
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <!-- <img src="" alt="weather icon" class="weather-icon"> -->
+                            <button class="close-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                        <ul class="weather-report">
+                            <li>
+                                <h4>Ветер</h4>
+                                <p>asdasd</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Облачность</h4>
+                                <p>asdasd</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Давление</h4>
+                                <p>asdasd</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Влажность</h4>
+                                <p>asdasd</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Координаты</h4>
+                                <p>asdasd</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="card-header">
+                            <div>
+                                <h3 class="place">Moscow</h3>
+                                <p>5°C</p>
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <!-- <img src="" alt="weather icon" class="weather-icon"> -->
+                            <button class="close-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                        <ul class="weather-report">
+                            <li>
+                                <h4>Ветер</h4>
+                                <p>asdasd</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Облачность</h4>
+                                <p>asdasd</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Давление</h4>
+                                <p>asdasd</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Влажность</h4>
+                                <p>asdasd</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Координаты</h4>
+                                <p>asdasd</p>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </section>

@@ -56,11 +56,23 @@ table {
 	background-color: #FFF;
 }
 
+/* button{
+	border-radius: 50%;
+	border: none;
+	height: 100%;
+} */
+
 /* Header */
 
 header{
 	display: flex;
 	margin-bottom: 30px;
+}
+
+.section-titles-block{
+	display: flex;
+	margin-bottom: 30px;
+	justify-content: space-between;
 }
 
 .section_title{
@@ -81,6 +93,7 @@ header{
 .place{
 	font-size: 28px;
 	font-weight: bold;
+	margin-right: 5%;
 }
 
 .place-current{
@@ -88,23 +101,24 @@ header{
 }
 
 .weather-icon{
-	border: solid 1px;
+	/* border: solid 1px; */
 	margin-right: 20%;
 }
+
+/* .fas, .far{
+	margin-right: 20%;
+} */
 
 .current-weather{
 	margin: 7% 0;
 	display: flex;
-}
-
-.temperature{
 	font-size: 120px;
 }
 
 /* Weather report card */
 
 .weather-report>li{
-	margin: 5px;
+	margin: 5px 0;
 	padding: 10px;
 	background-color: #50DD88;
 	display: flex;
@@ -114,3 +128,31 @@ header{
 .weather-report>li>h4{
 	font-weight: bold;
 }
+
+/* Pinned */
+
+.pinned>h2{
+	margin-bottom: 30px;
+}
+
+form>*{
+	height: 100%;
+}
+
+.pinned-list{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px;
+}
+
+.card-header{
+	display: flex;
+	justify-content: space-between;
+	font-size: 28px;
+}
+
+.card-header>div{
+	display: inherit;
+}
+
+/* Input elements styles */
