@@ -29,7 +29,6 @@ body {
 	line-height: 1;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 18px;
-	background-color: #242424;
 }
 ol, ul {
 	list-style: none;
@@ -53,21 +52,32 @@ table {
 	max-width: 1200px;
 	margin: 15px auto;
 	padding: 15px;
-	background-color: #FFF;
+	/* background-color: #FFF; */
 }
 
-/* button{
+button{
+	min-width: 28px;
 	border-radius: 50%;
 	border: none;
-	height: 100%;
-} */
+
+	background-color: #50DD88;
+	transition: .3s all;
+}
+
+button:hover{
+	cursor: pointer;
+	background-color: #1cbb5c;
+}
+
+.wide-btn{
+	min-width: 32px;
+}
+
+.square-btn{
+	border-radius: 0;
+}
 
 /* Header */
-
-header{
-	display: flex;
-	margin-bottom: 30px;
-}
 
 .section-titles-block{
 	display: flex;
@@ -75,10 +85,22 @@ header{
 	justify-content: space-between;
 }
 
+.first-block{
+	justify-content: left;
+}
+
 .section_title{
 	font-size: 32px;
 	font-weight: 500;
 	margin-right: 25%;
+}
+
+.section-title-decor{
+	padding-bottom: 5px;
+	background: linear-gradient(currentColor, currentColor);
+	background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
 }
 
 /* Current position */
@@ -93,21 +115,17 @@ header{
 .place{
 	font-size: 28px;
 	font-weight: bold;
-	margin-right: 5%;
+	margin-right: 15%;
 }
 
 .place-current{
 	margin-bottom: 15px;
 }
 
-.weather-icon{
-	/* border: solid 1px; */
-	margin-right: 20%;
+.wi{
+	margin-right: 15%;
+	margin-left: 5%;
 }
-
-/* .fas, .far{
-	margin-right: 20%;
-} */
 
 .current-weather{
 	margin: 7% 0;
@@ -121,6 +139,7 @@ header{
 	margin: 5px 0;
 	padding: 10px;
 	background-color: #50DD88;
+	/* background-color: #0BB493; */
 	display: flex;
 	justify-content: space-between;
 }
@@ -156,3 +175,14 @@ form>*{
 }
 
 /* Input elements styles */
+
+#search-field{
+	min-width: 250px;
+	background-color: #C4C4C4;
+	border: none;
+	padding-left: 13px;
+}
+
+#search-field::placeholder{
+	color: #000;
+}
