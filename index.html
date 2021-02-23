@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Weather report</title>
+        <script src="https://kit.fontawesome.com/3414c82043.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./lib/weather-icons-master/css/weather-icons.min.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/adaptiv.css">
+
+        <meta name="viewport" content="width=device-width" />
+    </head>
+    <body>
+        <main class="main-wrapper">
+
+            <div class="section-titles-block first-block">
+                <h2 class="section_title">
+                    <span class="section-title-decor">Погода здесь</span>
+                </h2>
+                <button class="square-btn">
+                    Обновить геопозицию
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+            
+            <!-- Current geoposition -->
+            <section class="current-position">
+                <div>
+                    <h3 class="place place-current">Saint-Petersburg</h3>
+                    <div class="current-weather">
+                        <i class="wi wi-day-sunny"></i>
+                        <p>8°C</p>
+                    </div>
+                </div>
+                
+                <ul class="weather-report">
+                    <li>
+                        <h4>Ветер</h4>
+                        <p>asdasd</p>
+                    </li>
+                    <li>
+                        <h4>Облачность</h4>
+                        <p>asdasd</p>
+                    </li>
+                    <li>
+                        <h4>Давление</h4>
+                        <p>asdasd</p>
+                    </li>
+                    <li>
+                        <h4>Влажность</h4>
+                        <p>asdasd</p>
+                    </li>
+                    <li>
+                        <h4>Координаты</h4>
+                        <p>asdasd</p>
+                    </li>
+                </ul>
+            </section>
+            
+            <!-- Pinned -->
+            <section class="pinned">
+                <div class="section-titles-block">
+                    <h2 class="section_title">
+                        <span class="section-title-decor">Избранное</span>
+                    </h2>
+                    <form action="">
+                        <input type="search" name="" id="search-field" placeholder="Добавить новый город">
+                        <button class="wide-btn"><i class="fas fa-plus"></i></button>
+                    </form>
+                </div>
+                <ul class="pinned-list">
+                    <li>
+                        <div class="card-header">
+                            <div>
+                                <h3 class="place">Moscow</h3>
+                                <p>5°C</p>
+                                <i class="wi wi-day-sunny"></i>
+                            </div>
+                            <button class="close-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                        <ul class="weather-report">
+                            <li>
+                                <h4>Ветер</h4>
+                                <p>Moderate breeze, 6.0 m/s, North-West</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Облачность</h4>
+                                <p>Broken clouds</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Давление</h4>
+                                <p>1013 hpa</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Влажность</h4>
+                                <p>52 %</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Координаты</h4>
+                                <p>[59.88, 30.42]</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="card-header">
+                            <div>
+                                <h3 class="place">Moscow</h3>
+                                <p>5°C</p>
+                                <i class="wi wi-day-sunny"></i>
+                            </div>
+                            <button class="close-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                        <ul class="weather-report">
+                            <li>
+                                <h4>Ветер</h4>
+                                <p>Moderate breeze, 6.0 m/s, North-West</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Облачность</h4>
+                                <p>Broken clouds</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Давление</h4>
+                                <p>1013 hpa</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Влажность</h4>
+                                <p>52 %</p>
+                            </li>
+                            <li>
+                                <h4 class="report-item-title">Координаты</h4>
+                                <p>[59.88, 30.42]</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </body>
+    <footer>
+
+    </footer>
+</html>
