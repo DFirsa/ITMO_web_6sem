@@ -1,0 +1,14 @@
+=========== Weather API ==============
+* WeatherAPI.com
+    Wind:
+        - wind_mph (wind speed m/s)
+        - wind_dir (wind direction)
+    Temperature:
+        - temp_c
+    Clouds:
+        - 
+    Pressure:
+        - pressure_mb (1mb = 1hpa)
+    Humidity:
+        - humidity (%)
+    Coords: []
