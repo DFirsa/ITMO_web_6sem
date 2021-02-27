@@ -61,6 +61,7 @@ button{
 
 	background-color: #50DD88;
 	transition: .3s all;
+	color: inherit;
 }
 
 button:hover{
@@ -100,18 +101,12 @@ button:hover{
 	font-size: 32px;
 	font-weight: 500;
 	margin-right: 19px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid;
 }
 
 .first-block .section_title{
 	margin-right: 25%;
-}
-
-.section-title-decor{
-	padding-bottom: 5px;
-	background: linear-gradient(currentColor, currentColor);
-	background-position: 0 100%;
-    background-repeat: no-repeat;
-    background-size: 100% 1px;
 }
 
 /* Current position */
@@ -164,10 +159,6 @@ button:hover{
 
 /* Pinned */
 
-.pinned>h2{
-	margin-bottom: 30px;
-}
-
 form>*{
 	height: 100%;
 }
@@ -182,6 +173,7 @@ form>*{
 	display: flex;
 	justify-content: space-between;
 	font-size: 28px;
+	margin-bottom: 12px;
 }
 
 .card-header>div{

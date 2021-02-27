@@ -35,6 +35,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-notes.txt
+.notes/*
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,vscode

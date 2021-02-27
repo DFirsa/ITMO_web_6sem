@@ -1,6 +1,6 @@
 @media (max-width: 800px){
 	.current-position, .pinned-list{
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: 1fr;
     }
 
     .square-btn{
@@ -28,8 +28,12 @@
 }
 
 @media (max-width: 460px){
+
+    .square-btn>span{
+        display: none;
+    }
+
     .square-btn{
-        font-size: 0;
         padding: 0;
         height: 36px;
         width: 36px;
