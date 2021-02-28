@@ -134,6 +134,8 @@ button:hover{
 }
 
 .current-weather{
+	max-height: calc(1em);
+
 	margin: 5% 0;
 	/* align-items: center; */
 	display: flex;
@@ -174,6 +176,8 @@ form>*{
 	justify-content: space-between;
 	font-size: 28px;
 	margin-bottom: 12px;
+
+	max-height: 28px;
 }
 
 .card-header>div{
@@ -192,4 +196,17 @@ form>*{
 
 #search-field::placeholder{
 	color: #000;
+}
+
+img{
+	max-height: 1.2em;
+	max-width: 1.2em;
+	object-fit: cover;
+}
+
+.card-header-img{
+	max-height: none;
+	max-width: none;
+	width: 35px;
+	height: 35px;
 }
