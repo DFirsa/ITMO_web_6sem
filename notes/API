@@ -6,7 +6,7 @@
     Temperature:
         - temp_c
     Clouds:
-        - 
+        - cloud
     Pressure:
         - pressure_mb (1mb = 1hpa)
     Humidity:
