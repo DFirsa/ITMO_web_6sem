@@ -10,7 +10,7 @@ function convert_dir(dir){
     return result;
 }
 
-function fill_weather_report(params, response){
+function fill_weather_report(params, response, extraAction=function(){}){
     const current = response['current'];
     const loc = response['location'];
 
@@ -24,6 +24,8 @@ function fill_weather_report(params, response){
     if(params['city'] !== undefined) params['city'].textContent = loc['name'];
     var icon_src = current['condition']['icon'].replace(/64x64/i, '128x128');
     params['icon'].src = icon_src;
+
+    extraAction();
 }
 
 const rapidapiKey = "5ea1a7bba0mshb4b5ef34560e186p1b62cbjsn45061317a9f6";
@@ -43,6 +45,7 @@ function getWeather(requestText, params){
         fill_weather_report(params, request.response);
     }
 
+    console.log("send : " + requestText)
     request.send();
 }
 
@@ -81,3 +84,6 @@ document.getElementsByClassName('square-btn')[0].onclick = function (){
 
 upd_current();
 // getWeather("Saint-Petersburg", current_place_params);
+
+
+// fetch

@@ -18,11 +18,38 @@ function update_cities(cities_set){
     localStorage['cities'] = JSON.stringify([...cities_set]);
 }
 
-function create_card(Set){
-    
+function create_card(CityName){
+    var template = document.querySelector('#pinned-card-template');
+    template.content.querySelector('h3').textContent = CityName;
+    items = template.content.querySelectorAll('p');
+
+    var place_params = {}
+    place_params['temp'] = items[0];
+    place_params['wind'] = items[1];
+    place_params['cloud'] = items[2];
+    place_params['press'] = items[3];
+    place_params['humidity'] = items[4];
+    place_params['coords'] = items[5];
+    place_params['icon'] = template.content.querySelector('img');
+    place_params['template'] = template;
+
+    console.log(place_params);
+
+    getWeather(CityName, place_params, () =>{
+        console.log("asfdasd")
+        var pinned_list = document.querySelector('.pinned-list');
+        var clone = document.importNode(place_params['template'].content, true);
+        pinned_list.appendChild(clone);
+    });
+}
+
+function load_pinned(set){
+    set.forEach(function (value){
+        create_card(value);
+    });
 }
 
 init_storage()
 var arr = new Set(JSON.parse(localStorage['cities']));
 console.log(arr)
-
+load_pinned(new Set(['Omsk']));
