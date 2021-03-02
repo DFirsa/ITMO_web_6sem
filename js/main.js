@@ -84,6 +84,3 @@ document.getElementsByClassName('square-btn')[0].onclick = function (){
 
 upd_current();
 // getWeather("Saint-Petersburg", current_place_params);
-
-
-// fetch

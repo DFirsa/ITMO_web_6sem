@@ -18,7 +18,7 @@ function update_cities(cities_set){
     localStorage['cities'] = JSON.stringify([...cities_set]);
 }
 
-function create_card(CityName){
+async function create_card(CityName){
     var template = document.querySelector('#pinned-card-template');
     template.content.querySelector('h3').textContent = CityName;
     items = template.content.querySelectorAll('p');
@@ -33,23 +33,19 @@ function create_card(CityName){
     place_params['icon'] = template.content.querySelector('img');
     place_params['template'] = template;
 
-    console.log(place_params);
-
-    getWeather(CityName, place_params, () =>{
-        console.log("asfdasd")
-        var pinned_list = document.querySelector('.pinned-list');
-        var clone = document.importNode(place_params['template'].content, true);
-        pinned_list.appendChild(clone);
-    });
+    await fillReport(CityName, place_params);
+    var pinned_list = document.querySelector('.pinned-list');
+    var clone = document.importNode(place_params['template'].content, true);
+    pinned_list.appendChild(clone);
 }
 
-function load_pinned(set){
-    set.forEach(function (value){
-        create_card(value);
+async function load_pinned(set){
+    set.forEach(async function (value){
+        await create_card(value);
     });
 }
 
 init_storage()
 var arr = new Set(JSON.parse(localStorage['cities']));
 console.log(arr)
-load_pinned(new Set(['Omsk']));
+load_pinned(arr);
