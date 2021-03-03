@@ -22,7 +22,6 @@
     }
 
     #search-field{
-        min-width: none;
         width: calc(100% - 43px);
     }
 }

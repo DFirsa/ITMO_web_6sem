@@ -1,0 +1,60 @@
+fetch:
+    Chrome: 42
+    Edge: 14
+    Firefox: 34
+    IE: NO
+    Opera: 28
+    Safari: 10.1
+    --------mobile-------
+    AndroidWebview: 42
+    Chrome for Android: 42
+    Firefox mobile: YES
+    IE Phone: NO
+    Opera mobile: ?
+    Safari mobile: 10.1
+
+grid:
+    Chrome: 57
+    Edge: NO
+    Firefox: 52
+    IE: NO
+    Opera: 44
+    Safari: NO
+    --------mobile-------
+    AndroidWebview: 57
+    Chrome for Android: 57
+    Firefox mobile: 52
+    IE Phone: NO
+    Opera mobile: 
+    Safari mobile: NO
+
+flex:
+    Chrome: 21
+    Edge: 
+    Firefox: 18
+    IE: 10
+    Opera: 12.10
+    Safari: 6.1
+    --------mobile-------
+    AndroidWebview: 4.4
+    Chrome for Android: 
+    Firefox mobile: ?
+    IE Phone: 11
+    Opera mobile: 12.10
+    Safari mobile: 7.1
+
+localStorage:
+    Chrome: 4
+    Edge: 
+    Firefox: 3.5
+    IE: 8
+    Opera: 10.50
+    Safari: 4
+    --------mobile-------
+    AndroidWebview: 2.1
+    Chrome for Android: 
+    Firefox mobile: ?
+    IE Phone: 8
+    Opera mobile: 11
+    Safari mobile: IOS 3.2
+

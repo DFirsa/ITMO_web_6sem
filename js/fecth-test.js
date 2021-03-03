@@ -1,5 +1,5 @@
 const queryPattern = "https://weatherapi-com.p.rapidapi.com/forecast.json?q=";
-const rapidapiKey = "5ea1a7bba0mshb4b5ef34560e186p1b62cbjsn45061317a9f6";
+const rapidapiKey =  "5ea1a7bba0mshb4b5ef34560e186p1b62cbjsn45061317a9f6";
 const rapidapiHost = "weatherapi-com.p.rapidapi.com";
 const defaultCity = localStorage['default-city'];
 
