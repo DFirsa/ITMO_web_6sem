@@ -7,14 +7,9 @@ function init_storage(){
     if (localStorage.getItem('default-city') === null) localStorage['default-city'] = 'Moscow';
 }
 
-function update_cities(cities_set){
-    localStorage['cities'] = JSON.stringify([...cities_set]);
-}
-
 async function create_card(CityName){
     var template = document.querySelector('#pinned-card-template');
 
-    // template.content.querySelector('h3').textContent = CityName;
     var place_params = report2Params(template.content.querySelector('.weather-report'));
     place_params['temp'] = template.content.querySelector('p');
     place_params['icon'] = template.content.querySelector('img');
@@ -23,9 +18,16 @@ async function create_card(CityName){
 
     await fillReport(CityName, place_params);
     var pinned_list = document.querySelector('.pinned-list');
-    var clone = document.importNode(place_params['template'].content, true);
-    console.log(clone.content);
+    var clone = template.content.querySelector('li').cloneNode(true);
+
     pinned_list.appendChild(clone);
+    clone.querySelector('button').onclick = function (){
+        pinned_list.removeChild(clone);
+
+        let pinnedCities = new Set(JSON.parse(localStorage['cities']))
+        pinnedCities.delete(CityName);
+        localStorage['cities'] = JSON.stringify([...pinnedCities]);
+    }
 }
 
 async function load_pinned(set){
