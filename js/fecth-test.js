@@ -1,7 +1,7 @@
 const queryPattern = "https://weatherapi-com.p.rapidapi.com/forecast.json?q=";
 const rapidapiKey =  "5ea1a7bba0mshb4b5ef34560e186p1b62cbjsn45061317a9f6";
 const rapidapiHost = "weatherapi-com.p.rapidapi.com";
-const defaultCity = localStorage['default-city'];
+let defaultCity = localStorage['default-city'];
 
 // Get API response
 async function getWeatherJSON(cityOrCoords){
@@ -45,14 +45,12 @@ async function fillReport(cityOrCoords, reportFields){
 }
 
 function report2Params(weatherReportList){
+    const keys = ['wind', 'cloud', 'press', 'humidity', 'coords'];
+    var items = weatherReportList.querySelectorAll('p');
     var params = {}
-    items = weatherReportList.querySelectorAll('p');
-    params['cloud'] = items[1];
-    params['wind'] = items[0];
-    params['press'] = items[2];
-    params['humidity'] = items[3];
-    params['coords'] = items[4];
-
+    for (let i = 0; i < keys.length; i++) {
+        params[keys[i]] = items[i];
+    }
     return params;
 }
 
