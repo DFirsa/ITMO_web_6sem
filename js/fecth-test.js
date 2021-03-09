@@ -13,14 +13,13 @@ async function getWeatherJSON(cityOrCoords){
             "x-rapidapi-host": rapidapiHost
         }
     });
-
     return await response.json();
 }
 
 // Fill weather report block
 function convertDir(dir){
-    var dirs = {"N":"North", "W":"West", "E":"East", "S":"South"}
-    var result = '';
+    const dirs = {"N":"North", "W":"West", "E":"East", "S":"South"}
+    let result = '';
     for (let i = 0; i < dir.length; i++) {
         result += dirs[dir[i]];
         if (i === 0 && dir.length > 1) result += '-'
@@ -29,9 +28,9 @@ function convertDir(dir){
 }
 
 async function fillReport(cityOrCoords, reportFields){
-    let weather = await getWeatherJSON(cityOrCoords);
-    let current = weather['current'];
-    let location = weather['location'];
+    const weather = await getWeatherJSON(cityOrCoords);
+    const current = weather['current'];
+    const location = weather['location'];
 
     reportFields['temp'].textContent = current['temp_c'] + '°C';
     reportFields['wind'].textContent = current['wind_mph'] + ' m/s, ' + convertDir(current['wind_dir']);
@@ -46,8 +45,8 @@ async function fillReport(cityOrCoords, reportFields){
 
 function report2Params(weatherReportList){
     const keys = ['wind', 'cloud', 'press', 'humidity', 'coords'];
-    var items = weatherReportList.querySelectorAll('p');
-    var params = {}
+    const items = weatherReportList.querySelectorAll('p');
+    let params = {}
     for (let i = 0; i < keys.length; i++) {
         params[keys[i]] = items[i];
     }
@@ -55,17 +54,19 @@ function report2Params(weatherReportList){
 }
 
 // Enable methods (can be useless)
-async function enableCurrent(){
+function enableCurrent(){
 
-    var params = report2Params(document.querySelector('.weather-report'));
-    params['temp'] = document.querySelector('p');
-    params['icon'] = document.querySelector('.wi');
-    params['city'] = document.querySelector('.place-current');
+    const parentNode = document.querySelectorAll('section')[0];
+    const loadingNode = document.getElementsByClassName('current-position')[0];
+    loadData(parentNode, loadingNode, async () => {
+        let params = report2Params(document.querySelector('.weather-report'));
+        params['temp'] = document.querySelector('p');
+        params['icon'] = document.querySelector('.wi');
+        params['city'] = document.querySelector('.place-current');
 
-    navigator.geolocation.getCurrentPosition(async (position) => {
-        var query = position.coords.latitude + ',' + position.coords.longitude;
-        await fillReport(query, params);
-    }, async () => { await fillReport(defaultCity, params)})
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const query = position.coords.latitude + ',' + position.coords.longitude;
+            await fillReport(query, params);
+        }, async () => { await fillReport(defaultCity, params)})
+    }, 500);
 }
-
-enableCurrent();

@@ -18,45 +18,42 @@
                     <span>Обновить геопозицию</span>
                     <i class="fas fa-sync-alt"></i>
                 </button>
-            </div>
-            
-            <!-- preloader -->
-            <div class="preloader">
-                <img src="./img/preloader.gif" alt="">
-            </div>
+            </div>  
 
             <!-- Current geoposition -->
-            <section class="current-position">
-                <div>
-                    <h3 class="place place-current"></h3>
-                    <div class="current-weather">
-                        <img src="" class="wi" alt="">
-                        <p></p>
+            <section>
+                <div class="current-position">
+                    <div>
+                        <h3 class="place place-current"></h3>
+                        <div class="current-weather">
+                            <img src="" class="wi" alt="">
+                            <p></p>
+                        </div>
                     </div>
+                    
+                    <ul class="weather-report">
+                        <li>
+                            <h4>Ветер</h4>
+                            <p></p>
+                        </li>
+                        <li>
+                            <h4>Облачность</h4>
+                            <p></p>
+                        </li>
+                        <li>
+                            <h4>Давление</h4>
+                            <p></p>
+                        </li>
+                        <li>
+                            <h4>Влажность</h4>
+                            <p></p>
+                        </li>
+                        <li>
+                            <h4>Координаты</h4>
+                            <p></p>
+                        </li>
+                    </ul>
                 </div>
-                
-                <ul class="weather-report">
-                    <li>
-                        <h4>Ветер</h4>
-                        <p></p>
-                    </li>
-                    <li>
-                        <h4>Облачность</h4>
-                        <p></p>
-                    </li>
-                    <li>
-                        <h4>Давление</h4>
-                        <p></p>
-                    </li>
-                    <li>
-                        <h4>Влажность</h4>
-                        <p></p>
-                    </li>
-                    <li>
-                        <h4>Координаты</h4>
-                        <p></p>
-                    </li>
-                </ul>
             </section>
             
             <!-- Pinned -->
@@ -107,6 +104,12 @@
                         </li>
                     </ul>
                 </li>
+            </template>
+            <template id="loader">
+                <div class="loader">
+                    <img src="./img/loader.svg" alt="" class="loader">
+                    <p>Загружаем данные</p>
+                </div>
             </template>
         </main>
     </body>

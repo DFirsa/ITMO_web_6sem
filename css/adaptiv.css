@@ -56,4 +56,7 @@
         display: block;
         flex-wrap: wrap;
     }
+    .place{
+        padding-bottom: 7px;
+    }
 }
