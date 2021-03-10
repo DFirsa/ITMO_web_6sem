@@ -31,8 +31,13 @@ async function create_card(CityName){
     place_params['icon'] = template.content.querySelector('img');
     place_params['template'] = template;
     place_params['city'] = template.content.querySelector('h3');
-
-    await fillReport(CityName, place_params);
+    
+    try {
+        await fillReport(CityName, place_params);
+    } catch (err) {
+        throw err;
+    }
+    
     const pinned_list = document.querySelector('.pinned-list');
     let clone = template.content.querySelector('li').cloneNode(true);
 
@@ -49,8 +54,18 @@ async function create_card(CityName){
 function load_pinned(){
     const parent = document.querySelectorAll('section')[1];
     const pinnedList = document.querySelector('.pinned-list');
+
     loadData(parent, pinnedList, async () => {
         let set = new Set(JSON.parse(localStorage['cities']));
-        set.forEach(async (value) => {await create_card(value)});
-    }, 1000)
+        const data = [...set];
+        for (let i = 0; i < data.length; i++) {
+            try {
+                await create_card(data[i]);
+            } catch (err) {
+                window.alert(err);
+                set.delete(data[i]);
+            }   
+        }
+        localStorage['cities'] = JSON.stringify([...set]);
+    }, 1000);
 }

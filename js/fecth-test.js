@@ -13,7 +13,7 @@ async function getWeatherJSON(cityOrCoords){
             "x-rapidapi-host": rapidapiHost
         }
     });
-    return await response.json();
+    return [await response.json(), response.status];
 }
 
 // Fill weather report block
@@ -28,19 +28,26 @@ function convertDir(dir){
 }
 
 async function fillReport(cityOrCoords, reportFields){
-    const weather = await getWeatherJSON(cityOrCoords);
-    const current = weather['current'];
-    const location = weather['location'];
+    const [weather, status] = await getWeatherJSON(cityOrCoords);
+    if (status === 200){
+        const current = weather['current'];
+        const location = weather['location'];
 
-    reportFields['temp'].textContent = current['temp_c'] + '°C';
-    reportFields['wind'].textContent = current['wind_mph'] + ' m/s, ' + convertDir(current['wind_dir']);
-    reportFields['cloud'].textContent = current['cloud'] + ' %';
-    reportFields['press'].textContent = current['pressure_mb'] + ' hpa';
-    reportFields['humidity'].textContent = current['humidity'] + ' %';
-    reportFields['coords'].textContent = '[ ' + location['lat'] + ', ' + location['lon'] + ' ]';
-    reportFields['icon'].src = current['condition']['icon'].replace(/64x64/i, '128x128');
+        reportFields['temp'].textContent = current['temp_c'] + '°C';
+        reportFields['wind'].textContent = current['wind_mph'] + ' m/s, ' + convertDir(current['wind_dir']);
+        reportFields['cloud'].textContent = current['cloud'] + ' %';
+        reportFields['press'].textContent = current['pressure_mb'] + ' hpa';
+        reportFields['humidity'].textContent = current['humidity'] + ' %';
+        reportFields['coords'].textContent = '[ ' + location['lat'] + ', ' + location['lon'] + ' ]';
+        reportFields['icon'].src = current['condition']['icon'].replace(/64x64/i, '128x128');
 
-    if(reportFields['city'] !== undefined) reportFields['city'].textContent = location['name'];
+        if(reportFields['city'] !== undefined) reportFields['city'].textContent = location['name'];
+    }
+    else{
+        // max http request status 526
+        throw "City " + cityOrCoords + " hasn't been found";
+    }
+    
 }
 
 function report2Params(weatherReportList){
@@ -58,7 +65,7 @@ function enableCurrent(){
 
     const parentNode = document.querySelectorAll('section')[0];
     const loadingNode = document.getElementsByClassName('current-position')[0];
-    loadData(parentNode, loadingNode, async () => {
+    loadData(parentNode, loadingNode, () => {
         let params = report2Params(document.querySelector('.weather-report'));
         params['temp'] = document.querySelector('p');
         params['icon'] = document.querySelector('.wi');

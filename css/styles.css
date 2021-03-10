@@ -249,3 +249,8 @@ img{
 .loader p{
 	font-weight: bold;
 }
+
+/* hide animation */
+.hide{
+	opacity: 0;
+}
