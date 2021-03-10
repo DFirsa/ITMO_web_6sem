@@ -250,7 +250,21 @@ img{
 	font-weight: bold;
 }
 
-/* hide animation */
-.hide{
-	opacity: 0;
+/* pinned-empty */
+
+.pinned-empty{
+	width: 100%;
+	text-align: center;
+
+	display: none;
+}
+
+.pinned-empty img{
+	max-width: 220px;
+	max-height: 220px;
+	margin: 40px 0;
+}
+
+.pinned-empty p{
+	font-weight: bold;
 }

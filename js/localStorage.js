@@ -18,8 +18,6 @@ function loadData(parentNode, loadingNode, loadFunction, delay){
         await loadFunction();
         parentNode.removeChild(parentNode.querySelector('.loader'));
         loadingNode.style.display = defaultValue;
-
-        //TODO: плавная анимация
     }, delay);
 }
 
@@ -42,12 +40,16 @@ async function create_card(CityName){
     let clone = template.content.querySelector('li').cloneNode(true);
 
     pinned_list.appendChild(clone);
-    clone.querySelector('button').onclick = function (){
+    clone.querySelector('button').onclick = () => {
         pinned_list.removeChild(clone);
 
         let pinnedCities = new Set(JSON.parse(localStorage['cities']))
         pinnedCities.delete(CityName);
         localStorage['cities'] = JSON.stringify([...pinnedCities]);
+
+        if([...pinnedCities].length === 0){
+            document.querySelector('.pinned-empty').style.display = 'block';
+        }
     }
 }
 
@@ -67,5 +69,9 @@ function load_pinned(){
             }   
         }
         localStorage['cities'] = JSON.stringify([...set]);
+
+        if (JSON.parse(localStorage['cities']).length === 0){
+            document.querySelector('.pinned-empty').style.display = 'block';
+        }
     }, 1000);
 }

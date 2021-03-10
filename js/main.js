@@ -14,9 +14,8 @@ function enableDeafultButtons(){
 }
 
 init_storage();
+
+let defaultCity = localStorage['default-city'];
 enableCurrent();
 load_pinned();
 enableDeafultButtons();
-
-// TODO: заглушку если все пины удалены
-// TODO: мб подсказки при вводе
