@@ -33,10 +33,7 @@ async function fillReport(cityOrCoords, reportFields){
         const current = weather['current'];
         const location = weather['location'];
 
-        let temp = current['temp_c'];
-        temp = temp.indexOf('.') === -1 ? temp : temp.substring(0,  temp.indexOf('.'));
-        console.log(temp);
-        reportFields['temp'].textContent = temp + '°C';
+        reportFields['temp'].textContent = Math.round(current['temp_c']) + '°C';
         reportFields['wind'].textContent = current['wind_mph'] + ' m/s, ' + convertDir(current['wind_dir']);
         reportFields['cloud'].textContent = current['cloud'] + ' %';
         reportFields['press'].textContent = current['pressure_mb'] + ' hpa';
