@@ -35,10 +35,7 @@ async function fillReport(cityOrCoords, reportFields){
 
         let temp = current['temp_c'];
         temp = temp.indexOf('.') === -1 ? temp : temp.substring(0,  temp.indexOf('.'));
-<<<<<<< HEAD
-=======
         console.log(temp);
->>>>>>> master
         reportFields['temp'].textContent = temp + '°C';
         reportFields['wind'].textContent = current['wind_mph'] + ' m/s, ' + convertDir(current['wind_dir']);
         reportFields['cloud'].textContent = current['cloud'] + ' %';
