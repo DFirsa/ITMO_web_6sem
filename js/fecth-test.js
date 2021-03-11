@@ -39,7 +39,7 @@ async function fillReport(cityOrCoords, reportFields){
         reportFields['press'].textContent = current['pressure_mb'] + ' hpa';
         reportFields['humidity'].textContent = current['humidity'] + ' %';
         reportFields['coords'].textContent = '[ ' + location['lat'] + ', ' + location['lon'] + ' ]';
-        reportFields['icon'].src = current['condition']['icon'].replace(/64x64/i, '128x128');
+        reportFields['icon'].src = 'http:' + current['condition']['icon'].replace(/64x64/i, '128x128');
 
         if(reportFields['city'] !== undefined) reportFields['city'].textContent = location['name'];
     }
