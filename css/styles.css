@@ -135,12 +135,9 @@ button:hover{
 }
 
 .current-weather{
-	max-height: calc(1em);
-
 	margin: 5% 0;
-	/* align-items: center; */
 	display: flex;
-	font-size: 120px;
+	font-size: 100px;
 	justify-content: center;
 }
 
