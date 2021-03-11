@@ -33,18 +33,19 @@ async function fillReport(cityOrCoords, reportFields){
         const current = weather['current'];
         const location = weather['location'];
 
-        reportFields['temp'].textContent = current['temp_c'] + '°C';
+        let temp = current['temp_c'];
+        temp = temp.indexOf('.') === -1 ? temp : temp.substring(0,  temp.indexOf('.'));
+        reportFields['temp'].textContent = temp + '°C';
         reportFields['wind'].textContent = current['wind_mph'] + ' m/s, ' + convertDir(current['wind_dir']);
         reportFields['cloud'].textContent = current['cloud'] + ' %';
         reportFields['press'].textContent = current['pressure_mb'] + ' hpa';
         reportFields['humidity'].textContent = current['humidity'] + ' %';
         reportFields['coords'].textContent = '[ ' + location['lat'] + ', ' + location['lon'] + ' ]';
-        reportFields['icon'].src = 'http:' + current['condition']['icon'].replace(/64x64/i, '128x128');
+        reportFields['icon'].src = current['condition']['icon'].replace(/64x64/i, '128x128');
 
         if(reportFields['city'] !== undefined) reportFields['city'].textContent = location['name'];
     }
     else{
-        // max http request status 526
         throw "City " + cityOrCoords + " hasn't been found";
     }
     
