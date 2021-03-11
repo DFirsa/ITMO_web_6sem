@@ -6,9 +6,30 @@
     Temperature:
         - temp_c
     Clouds:
-        - 
+        - cloud
     Pressure:
         - pressure_mb (1mb = 1hpa)
     Humidity:
         - humidity (%)
     Coords: []
+
+
+    =============== PARAMS STRUCTURE ==================
+    {
+        --> required fileds <--
+
+        "temp" : document...
+        "wind" : document...
+        "cloud" : document...
+        "press" : document...
+        "humidity" : document...
+        "coords" : document...
+        "icon" : document...
+
+        --> optional fields <--
+
+        "city" : document...
+    }
+
+
+TODO: плавная анимация появления

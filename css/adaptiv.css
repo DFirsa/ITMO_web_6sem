@@ -50,3 +50,13 @@
         font-size: 25vw;
     }
 }
+
+@media (max-width: 380px){
+    .card-header>div{
+        display: block;
+        flex-wrap: wrap;
+    }
+    .place{
+        padding-bottom: 7px;
+    }
+}

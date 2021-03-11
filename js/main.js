@@ -1,33 +1,21 @@
-// [ latitude; longitude ]
+function enableDeafultButtons(){
+    const refreashCurrentBtn = document.querySelector('.square-btn');
+    refreashCurrentBtn.onclick = () => {enableCurrent();}
 
-// function updateWeather(latitude, longitude){
-    
-// }
+    const form = document.querySelector('form');
+    form.onsubmit = () => {
+        const newCity = document.querySelector('#search-field').value.trim();
+        if(newCity !== ""){
+            let pinnedCities = new Set(JSON.parse(localStorage['cities']))
+            pinnedCities.add(newCity);
+            localStorage['cities'] = JSON.stringify([...pinnedCities]);
+        }
+    }
+}
 
-// function getCoords(position){
-//     const lat = position.coords.latitude;
-//     const long = position.coords.longitude;
-//     return {"lat": lat, "long": long}
-//     // return tuple (lat, long)
-// }
+init_storage();
 
-// function error(){
-//    window.alert("NE ROBIT")
-// }
-
-// var k = navigator.geolocation.getCurrentPosition(getCoords, error)
-// console.log(k)
-
-fetch("https://weatherapi-com.p.rapidapi.com/forecast.json?q=Saint-Petersburg", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "5ea1a7bba0mshb4b5ef34560e186p1b62cbjsn45061317a9f6",
-		"x-rapidapi-host": "weatherapi-com.p.rapidapi.com"
-	}
-})
-.then(response => {
-	console.log(response.text());
-})
-.catch(err => {
-	console.error(err);
-});
+let defaultCity = localStorage['default-city'];
+enableCurrent();
+load_pinned();
+enableDeafultButtons();
