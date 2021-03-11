@@ -6,6 +6,8 @@ function init_storage(){
         localStorage['cities'] = JSON.stringify(default_cities);
     }
     if (localStorage.getItem('default-city') === null) localStorage['default-city'] = 'Moscow';
+
+    console.log("!!!")
 }
 
 function loadData(parentNode, loadingNode, loadFunction, delay){
