@@ -47,7 +47,11 @@
 
 @media (max-width: 410px){
     .current-weather{
+<<<<<<< HEAD
+        font-size: 20vw;
+=======
         font-size: 23vw;
+>>>>>>> master
     }
 }
 
