@@ -35,7 +35,7 @@ async function getWeatherJSON(cityOrCoords) {
       'x-rapidapi-host': rapidapiHost,
     },
   });
-  return [await response.json(), response.status];
+  return response.json();
 }
 
 // Fill weather report block
@@ -52,24 +52,20 @@ function convertDir(dir) {
 }
 
 async function fillReport(cityOrCoords, reportFields) {
-  const [weather, status] = await getWeatherJSON(cityOrCoords);
-  if (status === 200) {
-    const { current } = weather;
-    const { location } = weather;
-    const report = reportFields;
+  const weather = await getWeatherJSON(cityOrCoords);
+  const { current } = weather;
+  const { location } = weather;
+  const report = reportFields;
 
-    report.temp.textContent = `${Math.round(current.temp_c)}°C`;
-    report.wind.textContent = `${current.wind_mph} m/s, ${convertDir(current.wind_dir)}`;
-    report.cloud.textContent = `${current.cloud} %`;
-    report.press.textContent = `${current.pressure_mb} hpa`;
-    report.humidity.textContent = `${current.humidity} %`;
-    report.coords.textContent = `[ ${location.lat}, ${location.lon} ]`;
-    report.icon.src = current.condition.icon.replace(/64x64/i, '128x128');
+  report.temp.textContent = `${Math.round(current.temp_c)}°C`;
+  report.wind.textContent = `${current.wind_mph} m/s, ${convertDir(current.wind_dir)}`;
+  report.cloud.textContent = `${current.cloud} %`;
+  report.press.textContent = `${current.pressure_mb} hpa`;
+  report.humidity.textContent = `${current.humidity} %`;
+  report.coords.textContent = `[ ${location.lat}, ${location.lon} ]`;
+  report.icon.src = current.condition.icon.replace(/64x64/i, '128x128');
 
-    if (reportFields.city !== undefined) report.city.textContent = location.name;
-  } else {
-    throw new Error(`City ${cityOrCoords} hasn't been found`);
-  }
+  if (reportFields.city !== undefined) report.city.textContent = location.name;
 }
 
 // Loading process (hide block -> show laoder + fill report) -> hide loader + show block
@@ -103,22 +99,6 @@ function enableCurrent() {
   }, 500);
 }
 
-// Set default buttons onClick methods
-function enableDeafultButtons() {
-  const refreashCurrentBtn = document.querySelector('.square-btn');
-  refreashCurrentBtn.onclick = () => { enableCurrent(); };
-
-  const form = document.querySelector('form');
-  form.onsubmit = () => {
-    const newCity = document.querySelector('#search-field').value.trim();
-    if (newCity !== '') {
-      const pinnedCities = new Set(JSON.parse(localStorage.cities));
-      pinnedCities.add(newCity);
-      localStorage.cities = JSON.stringify([...pinnedCities]);
-    }
-  };
-}
-
 // Render card to htnl
 async function createCard(CityName) {
   const template = document.querySelector('#pinned-card-template');
@@ -148,6 +128,32 @@ async function createCard(CityName) {
   };
 }
 
+// Set default buttons onClick methods
+function enableDeafultButtons() {
+  const refreashCurrentBtn = document.querySelector('.square-btn');
+  refreashCurrentBtn.onclick = () => { enableCurrent(); };
+
+  const form = document.querySelector('form');
+  form.onsubmit = async (evt) => {
+    const searchField = document.querySelector('#search-field');
+    evt.preventDefault();
+    const newCity = searchField.value.trim();
+    searchField.value = '';
+    if (newCity !== '') {
+      try {
+        const pinnedCities = new Set(JSON.parse(localStorage.cities));
+        if (!pinnedCities.has(newCity)) {
+          await createCard(newCity);
+          pinnedCities.add(newCity);
+          localStorage.cities = JSON.stringify([...pinnedCities]);
+        }
+      } catch (err) {
+        window.alert(`City ${newCity} hasn't been found`);
+      }
+    }
+  };
+}
+
 // Loading favorites cities
 function loadPinned() {
   const parent = document.querySelectorAll('section')[1];
@@ -155,15 +161,9 @@ function loadPinned() {
   loadData(parent, '.pinned-list', async () => {
     const set = new Set(JSON.parse(localStorage.cities));
     const data = [...set];
-    for (let i = 0; i < data.length; i += 1) {
-      try {
-        createCard(data[i]);
-      } catch (err) {
-        window.alert(err);
-        set.delete(data[i]);
-      }
-    }
-    localStorage.cities = JSON.stringify([...set]);
+    data.forEach((city) => {
+      createCard(city);
+    });
 
     if (JSON.parse(localStorage.cities).length === 0) {
       document.querySelector('.pinned-empty').style.display = 'block';

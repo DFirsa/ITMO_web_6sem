@@ -38,4 +38,5 @@ $RECYCLE.BIN/
 notes/*
 node_modules/*
 
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,vscode
