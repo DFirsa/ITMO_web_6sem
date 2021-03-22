@@ -1,0 +1,25 @@
+{
+  "name": "itmo_web_6sem",
+  "version": "1.0.0",
+  "description": "weather forecast project for ITMO. Labs in the 6th semestre. Web-programming course",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DFirsa/ITMO_web_6sem.git"
+  },
+  "author": "Firsa Denis (@DFirsa)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DFirsa/ITMO_web_6sem/issues"
+  },
+  "homepage": "https://github.com/DFirsa/ITMO_web_6sem#readme"
+}
