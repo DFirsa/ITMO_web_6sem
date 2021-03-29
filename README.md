@@ -9,7 +9,7 @@
 
 #### :wheelchair: githubpages :wheelchair:
 [тык :circus_tent:](https://dfirsa.github.io/ITMO_web_6sem/)
-### :octocat: Server git-repo :octocat:
+#### :octocat: Server git-repo :octocat:
 [тык :rocket:](https://github.com/DFirsa/ITMO_web_6sem_server)
 
 ## Реализованные фичи
@@ -63,7 +63,7 @@
 [Шаблон](https://sun9-61.userapi.com/impg/e1UYf1vDBGeSbOi0ydtW8TaFK4moQztbILTA9A/SIbmA144WC0.jpg?size=807x537&quality=96&sign=86e64175b5508379b565b34fb3a3e5fb&type=album)
 
 ### Лабораторная 3
-Необходимо доработать лабораторную работу №2, добавив реализацию серверной части приложения. Серверная часть реализуется на NodeJS, допустимо использовать фреймворки вроде [Express](https://expressjs.com/) или ![Sails](https://sailsjs.com/).
+Необходимо доработать лабораторную работу №2, добавив реализацию серверной части приложения. Серверная часть реализуется на NodeJS, допустимо использовать фреймворки вроде [Express](https://expressjs.com/) или [Sails](https://sailsjs.com/).
 
 Приложение в этой работе становится клиент-серверным, запросы данных о погоде к внешнему API и хранение данных об избранных городах переносятся на сервер. Запросы с клиента отправляются только к самостоятельно реализованной серверной части.
 
