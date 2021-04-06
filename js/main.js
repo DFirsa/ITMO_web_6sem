@@ -164,7 +164,14 @@ function loadPinned() {
   const parent = document.querySelectorAll('section')[1];
 
   loadData(parent, '.pinned-list', async () => {
-    const map = new Map(JSON.parse(localStorage.cities));
+    let map;
+    try {
+      map = new Map(JSON.parse(localStorage.cities));
+    } catch (error) {
+      localStorage.clear();
+      initStorage();
+      map = new Map(JSON.parse(localStorage.cities));
+    }
     const data = [...map];
     data.forEach((pair) => {
       createCard(pair[1], pair[0]);

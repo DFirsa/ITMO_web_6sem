@@ -35,6 +35,9 @@
 * CSS/HTML
 * [Font awesome]()
 * ~[Weather icons](https://erikflowers.github.io/weather-icons/)~
+* [HTML GeolocationAPI](https://developer.mozilla.org/ru/docs/Web/API/Geolocation_API/Using_the_Geolocation_API)
+* [Weather.com API](https://www.weatherapi.com/)
+* [ESLint](https://eslint.org/)
 
 ## Лабы
 | # Лабороторной | Содержание                                   | Дедлайны  |
