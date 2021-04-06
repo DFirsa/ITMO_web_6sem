@@ -11,7 +11,8 @@ function report2Params(weatherReportList) {
 
 // init local storage
 function initStorage() {
-  const defaultCities = ['Moscow', 'Kaliningrad', 'Omsk', 'Saint-Petersburg', 'Ekaterinburg'];
+  const defaultCities = [['55.75;37.62','Moscow'], ['54.71;20.5','Kaliningrad'], 
+                        ['55;73.4','Omsk'], ['59.89;30.26','Saint-Petersburg'], ['56.85;60.6','Ekaterinburg']];
 
   if (localStorage.getItem('cities') === null) {
     localStorage.cities = JSON.stringify(defaultCities);
@@ -100,7 +101,7 @@ function enableCurrent() {
 }
 
 // Render card to htnl
-async function createCard(CityName) {
+async function createCard(CityName, key) {
   const template = document.querySelector('#pinned-card-template');
 
   const placeParams = report2Params(template.content.querySelector('.weather-report'));
@@ -114,12 +115,14 @@ async function createCard(CityName) {
   const pinnedList = document.querySelector('.pinned-list');
   const clone = template.content.querySelector('li').cloneNode(true);
 
+  document.querySelector('.pinned-empty').style.display = 'none';
+
   pinnedList.appendChild(clone);
   clone.querySelector('button').onclick = () => {
     pinnedList.removeChild(clone);
 
-    const pinnedCities = new Set(JSON.parse(localStorage.cities));
-    pinnedCities.delete(CityName);
+    const pinnedCities = new Map(JSON.parse(localStorage.cities));
+    pinnedCities.delete(key);
     localStorage.cities = JSON.stringify([...pinnedCities]);
 
     if ([...pinnedCities].length === 0) {
@@ -141,10 +144,12 @@ function enableDeafultButtons() {
     searchField.value = '';
     if (newCity !== '') {
       try {
-        const pinnedCities = new Set(JSON.parse(localStorage.cities));
-        if (!pinnedCities.has(newCity)) {
-          await createCard(newCity);
-          pinnedCities.add(newCity);
+        const weather = await getWeatherJSON(newCity);
+        const key = weather.location.lat + ';' + weather.location.lon;
+        const pinnedCities = new Map(JSON.parse(localStorage.cities));
+        if (!pinnedCities.has(key)) {
+          await createCard(newCity, key);
+          pinnedCities.set(key, newCity);
           localStorage.cities = JSON.stringify([...pinnedCities]);
         }
       } catch (err) {
@@ -159,10 +164,10 @@ function loadPinned() {
   const parent = document.querySelectorAll('section')[1];
 
   loadData(parent, '.pinned-list', async () => {
-    const set = new Set(JSON.parse(localStorage.cities));
-    const data = [...set];
-    data.forEach((city) => {
-      createCard(city);
+    const map = new Map(JSON.parse(localStorage.cities));
+    const data = [...map];
+    data.forEach((pair) => {
+      createCard(pair[1], pair[0]);
     });
 
     if (JSON.parse(localStorage.cities).length === 0) {
