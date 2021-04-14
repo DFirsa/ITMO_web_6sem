@@ -30,7 +30,7 @@ async function fillReport(cityOrCoords, reportFields, weatherData) {
   let weather;
   if(weatherData !== undefined) weather = weatherData;
   else{
-    weather = await (await fetch(`${serverURL}${cityOrCoords}`, {
+    weather = await (await fetch(`${serverURL}${cityOrCoords.replace(' ', '%20')}`, {
       method: 'GET'
     })).json();
   }
@@ -99,7 +99,7 @@ async function createCard(CityName, weather) {
   clone.querySelector('button').onclick = async () => {
     pinnedList.removeChild(clone);
 
-    await fetch(`${serverURL}favorites?city=${placeParams.city.textContent}`, {
+    await fetch(`${serverURL}favorites?city=${placeParams.city.textContent.replace(' ', '%20')}`, {
       method: 'DELETE'
     });
     const pinnedCities = await (await fetch(`${serverURL}favorites`, {
@@ -125,7 +125,7 @@ function enableDeafultButtons() {
     searchField.value = '';
     if (newCity !== '') {
       try {
-        const result = await (await fetch(`${serverURL}favorites?city=${newCity}`, {
+        const result = await (await fetch(`${serverURL}favorites?city=${newCity.replace(' ', '%20')}`, {
           method: 'POST'
         })).json();
         if (result.name !== undefined) {
@@ -151,9 +151,8 @@ function loadPinned() {
       createCard(weatherData.city, weatherData);
     }));
 
-    if (JSON.parse(localStorage.cities).length === 0) {
-      document.querySelector('.pinned-empty').style.display = 'block';
-    }
+    console.log(favorites.favorites.length)
+    if (!favorites.favorites.length) document.querySelector('.pinned-empty').style.display = 'block';
   }, 1000);
 }
 
