@@ -77,7 +77,7 @@ function enableCurrent() {
       const query = `weather/coordinates?lat=${position.coords.latitude}&lon=${position.coords.longitude}`;
       await fillReport(query, params);
     }, async () => { await fillReport(defaultCity, params); });
-  }, 500);
+  }, 0);
 }
 
 // Render card to htnl
@@ -153,7 +153,7 @@ function loadPinned() {
 
     console.log(favorites.favorites.length)
     if (!favorites.favorites.length) document.querySelector('.pinned-empty').style.display = 'block';
-  }, 1000);
+  }, 0);
 }
 
 enableCurrent();
